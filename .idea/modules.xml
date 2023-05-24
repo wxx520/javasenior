@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/algorithmExe/algorithmExe.iml" filepath="$PROJECT_DIR$/algorithmExe/algorithmExe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day01/day01.iml" filepath="$PROJECT_DIR$/day01/day01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day03/day03.iml" filepath="$PROJECT_DIR$/day03/day03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day04/day04.iml" filepath="$PROJECT_DIR$/day04/day04.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day05Enum/day05Enum.iml" filepath="$PROJECT_DIR$/day05Enum/day05Enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day06collection/day06collection.iml" filepath="$PROJECT_DIR$/day06collection/day06collection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day07/day07collection2.iml" filepath="$PROJECT_DIR$/day07/day07collection2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day08IOStream/day08IOStream.iml" filepath="$PROJECT_DIR$/day08IOStream/day08IOStream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day10Reflection/day10Reflection.iml" filepath="$PROJECT_DIR$/day10Reflection/day10Reflection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day11Java8/day11Java8.iml" filepath="$PROJECT_DIR$/day11Java8/day11Java8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javasenior.iml" filepath="$PROJECT_DIR$/javasenior.iml" />
+    </modules>
+  </component>
+</project>
