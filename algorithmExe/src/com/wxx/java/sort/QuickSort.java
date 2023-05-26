@@ -13,14 +13,32 @@ import java.util.Random;
 public class QuickSort {
     private static final Random random = new Random(System.currentTimeMillis());
 
+    private static final int INSERTION_SORT_THRESHOLD = 7;
+
     private static void quickSort(int[] nums, int left, int right) {
-        if (left >= right) {
+        if (right - left <= INSERTION_SORT_THRESHOLD) {
+            insertionSort(nums, left, right);
             return;
         }
         int pivotIndex = partitionByTwoWay(nums, left, right);
 
         quickSort(nums, left, pivotIndex - 1);//递归调用
         quickSort(nums, pivotIndex + 1, right);
+    }
+
+    private static void insertionSort(int[] nums, int left, int right) {
+        if(left>=right){
+            return;
+        }
+        for (int i = left + 1; i <= right; i++) {
+            int temp = nums[i];
+            int j = i;
+            while (j > left && nums[j - 1] > temp) {
+                nums[j] = nums[j - 1];
+                j--;
+            }
+            nums[j] = temp;
+        }
     }
 
     /**
@@ -55,17 +73,19 @@ public class QuickSort {
     /**
      * 双路快排
      * 循环不变量：
-     * 循环前：
+     * 初始化：
      * pivot = nums[left];
+     * int le = letf+1;
+     * int ge=right
      * [left+1,le)<=pivot
      * (ge,right]>=pivot
      * 循环中：
-     * * 当i遇到nums[le]<pivot,le++;否则在停下
-     * * 当j遇到nums[ge]>pivot,ge--;否则停下
-     * * 双方停下后交换swap(nums,ge,le);ge--,le++
-     * * swap(nums,ge,left);
-     * 循环结束：
+     * * 当le遇到nums[le]<pivot,le++;否则在停下
+     * * 当ge遇到nums[ge]>pivot,ge--;否则停下
      * * 当ge<=le时，遍历结束
+     * * 双方停下后交换swap(nums,ge,le);ge--,le++
+     * 循环结束：
+     * [0,n-1]均有序
      *
      * @param nums
      * @param left
@@ -83,8 +103,8 @@ public class QuickSort {
         int le = left + 1;
         int ge = right;
 
-        // all nums in nums[left+1,j)<pivot
-        //all nums in nums(j,i)>pivot;
+        // all nums in nums[left+1,le)<=pivot
+        //all nums in nums(ge,right]>pivot;
         while (true) {
             while (le <= ge && nums[le] < pivot) {
                 le++;
@@ -94,6 +114,8 @@ public class QuickSort {
                 ge--;
             }
 
+            //le 来到第一个大于等于pivot的值
+            //ge 来到第一个小于等于pivot的值
             if (le >= ge) {
                 break;
             }
@@ -106,9 +128,9 @@ public class QuickSort {
     }
 
     /**
-     * 双路快排
+     * 三路快排
      * 循环不变量：
-     * 循环前：
+     * 初始化：
      * i是遍历，left+1<=i<=gt
      * pivot = nums[left];
      * lt = left+1;
@@ -118,13 +140,13 @@ public class QuickSort {
      * [left+1..lt)<pivot;
      * [lt..i)=pivot;
      * (gt..right]>pivot;
-     * 循环中：
+     * 保持：
      * * 当i遇到nums[i]<pivot,lt++,swap(nums, i, lt),i++;
      * * 当i遇到nums[i]=pivot,i++;
-     * * 当i遇到nums[i]>pivot, swap(nums,gt,i),gt--,i++;
-     * 循环结束：
-     * *i>gt,遍历结束swap(nums,lt,left);
-     * 当i=gt时，[lt..gt)(gt..right];并未遍历完成
+     * * 当i遇到nums[i]>pivot, swap(nums,gt,i),gt--;
+     * swap(nums,left,lt-1);
+     * 种植：
+     * [0..n]全部有序
      *
      * @param nums
      * @param left
@@ -132,7 +154,8 @@ public class QuickSort {
      * @return
      */
     private static void quickSortByThreeWays(int[] nums, int left, int right) {
-        if (left >= right) {
+        if (right - left <= INSERTION_SORT_THRESHOLD) {
+            insertionSort(nums, left, right);
             return;
         }
         //random.nextInt(right-left+1)的随机区间为[0,(right-left+1)-1]=[0,right-left]
@@ -163,8 +186,8 @@ public class QuickSort {
         }
         swap(nums,left,lt-1);//nums[lt]时等于pivot的，此时要和小于pivot的组合的最后一个元素交换使得[left..lt-1)都小于pivot
 
-        quickSort(nums, left, lt - 2);//递归调用,nums[lt-1]=pivot
-        quickSort(nums, gt-1, right);
+        quickSortByThreeWays(nums, left, lt - 2);//递归调用,nums[lt-1]=pivot
+        quickSortByThreeWays(nums, gt+1, right);
     }
 
     /**
@@ -204,7 +227,7 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] data = {9, -16, 30, 23, -30, -49, 25, 21, 30};
         System.out.println("排序之前：\n" + java.util.Arrays.toString(data));
-        quickSort(data);
+        quickSortByThreeWays(data,0,data.length-1);
         System.out.println("排序之后：\n" + java.util.Arrays.toString(data));
     }
 }
