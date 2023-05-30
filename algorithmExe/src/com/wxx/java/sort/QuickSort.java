@@ -104,7 +104,7 @@ public class QuickSort {
         int ge = right;
 
         // all nums in nums[left+1,le)<=pivot
-        //all nums in nums(ge,right]>pivot;
+        //all nums in nums(ge,right]>=pivot;
         while (true) {
             while (le <= ge && nums[le] < pivot) {
                 le++;
