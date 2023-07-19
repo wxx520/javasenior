@@ -1,4 +1,4 @@
-package com.wxx.java.string;
+package com.wxx.java.datastructure.string;
 
 import org.junit.Test;
 

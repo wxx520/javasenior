@@ -1,4 +1,6 @@
-package com.wxx.java.datastructure;
+package com.wxx.java.datastructure.tree;
+
+import com.wxx.java.datastructure.tree.TreeNode;
 
 public class BinaryTreeTest {
 

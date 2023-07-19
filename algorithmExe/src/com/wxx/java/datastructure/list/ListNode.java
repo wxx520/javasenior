@@ -1,4 +1,4 @@
-package com.wxx.java.datastructure;
+package com.wxx.java.datastructure.list;
 
 public class ListNode {
     int val;

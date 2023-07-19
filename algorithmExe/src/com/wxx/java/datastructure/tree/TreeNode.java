@@ -1,4 +1,4 @@
-package com.wxx.java.datastructure;
+package com.wxx.java.datastructure.tree;
 
 public class TreeNode {
     int val;

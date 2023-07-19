@@ -1,4 +1,4 @@
-package com.wxx.java.list;
+package com.wxx.java.datastructure.list;
 
 import java.util.HashMap;
 import java.util.Map;
