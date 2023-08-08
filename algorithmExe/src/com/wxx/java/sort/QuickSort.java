@@ -27,7 +27,7 @@ public class QuickSort {
     }
 
     private static void insertionSort(int[] nums, int left, int right) {
-        if(left>=right){
+        if (left >= right) {
             return;
         }
         for (int i = left + 1; i <= right; i++) {
@@ -170,24 +170,24 @@ public class QuickSort {
         //all nums in [left+1..lt)<pivot
         //all nums in [lt..i)=pivot
         //all nums in (gt..right]>pivot
-        while (i<=gt){
-            if(nums[i]<pivot){//交换到等于pivot的第一个位置
-                swap(nums,lt,i);
+        while (i <= gt) {
+            if (nums[i] < pivot) {//交换到等于pivot的第一个位置
+                swap(nums, lt, i);
                 lt++;
                 i++;
-            }else if(nums[i]==pivot){//不变i++遍历下一个
+            } else if (nums[i] == pivot) {//不变i++遍历下一个
                 i++;
-            }else {
+            } else {
                 //nums[i]>pivot
-                swap(nums,gt,i);//交换到大于pivot的第一个位置
+                swap(nums, gt, i);//交换到大于pivot的第一个位置
                 gt--;
                 //i不能加1，因为i的位置已经换成了原来的nums[gt]还没被处理
             }
         }
-        swap(nums,left,lt-1);//nums[lt]时等于pivot的，此时要和小于pivot的组合的最后一个元素交换使得[left..lt-1)都小于pivot
+        swap(nums, left, lt - 1);//nums[lt]时等于pivot的，此时要和小于pivot的组合的最后一个元素交换使得[left..lt-1)都小于pivot
 
         quickSortByThreeWays(nums, left, lt - 2);//递归调用,nums[lt-1]=pivot
-        quickSortByThreeWays(nums, gt+1, right);
+        quickSortByThreeWays(nums, gt + 1, right);
     }
 
     /**
@@ -227,7 +227,7 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] data = {9, -16, 30, 23, -30, -49, 25, 21, 30};
         System.out.println("排序之前：\n" + java.util.Arrays.toString(data));
-        quickSortByThreeWays(data,0,data.length-1);
+        quickSortByThreeWays(data, 0, data.length - 1);
         System.out.println("排序之后：\n" + java.util.Arrays.toString(data));
     }
 }
