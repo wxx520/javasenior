@@ -73,6 +73,7 @@ public class BST {
      * 看看放在左边还是放在右边，然后把插入以后形成的树的根结点返回。
      * 注意这里的递归调用实现，初学的时候，不是很好理解。
      * 可以尝试从最最简单的情况开始分析。
+     * test
      *
      * @param node
      * @param key
@@ -289,7 +290,7 @@ public class BST {
     private Node removeMax(Node node) {
         if (node.right == null) {
             Node leftNode = node.left;
-            node.left=null;
+            node.left = null;
             count--;
             return leftNode;
         }
