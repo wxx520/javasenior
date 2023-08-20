@@ -2,7 +2,6 @@ package com.wxx.java.datastructure;
 
 import org.junit.Test;
 
-import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -55,7 +54,7 @@ public class MaxSlidingWindowTest {
      * @param k
      * @return
      */
-    public int[] maxSlidingWindowByPriorityQueu(int[] nums, int k) {
+    public int[] maxSlidingWindowByPriorityQueue(int[] nums, int k) {
         if (k <= 1) {
             return nums;
         }
@@ -85,7 +84,7 @@ public class MaxSlidingWindowTest {
 
     @Test
     public void t1() {
-        System.out.println(Arrays.toString(maxSlidingWindowByPriorityQueu(new int[]{1, 3, 1, 2, 0, 5}, 3)));
-        System.out.println(Arrays.toString(maxSlidingWindowByPriorityQueu(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
+        System.out.println(Arrays.toString(maxSlidingWindowByPriorityQueue(new int[]{1, 3, 1, 2, 0, 5}, 3)));
+        System.out.println(Arrays.toString(maxSlidingWindowByPriorityQueue(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
     }
 }
