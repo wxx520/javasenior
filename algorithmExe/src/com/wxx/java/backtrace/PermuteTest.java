@@ -1,5 +1,7 @@
 package com.wxx.java.backtrace;
 
+import org.junit.Test;
+
 import java.util.*;
 
 /**
@@ -33,11 +35,23 @@ public class PermuteTest {
             }
             path.offerLast(nums[i]);
             used[i] = true;
+
+            System.out.println("  递归之前 => " + path);
             dfs(nums, len, depth + 1, path, used, ret);
+            System.out.println("递归之后 => " + path);
+
             used[i] = false;
             path.pollLast();
+            System.out.println("递归之后回溯还原 => " + path);
         }
 
+    }
+
+    @Test
+    public void t1(){
+        int[] arr = {1,2,3};
+        List<List<Integer>> ret = permute(arr);
+        System.out.println(ret);
     }
 
     public List<List<Integer>> permute1(int[] nums) {
