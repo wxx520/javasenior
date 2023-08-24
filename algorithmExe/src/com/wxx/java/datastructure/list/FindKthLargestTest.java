@@ -1,4 +1,4 @@
-package com.wxx.java.datastructure;
+package com.wxx.java.datastructure.list;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

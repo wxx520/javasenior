@@ -1,4 +1,4 @@
-package com.wxx.java.datastructure;
+package com.wxx.java.datastructure.list;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -37,8 +37,6 @@ public class MergeKListTest {
     }
 
 
-
-
     /***
      * 链表两两比较，list[0],list[1],得到新链表dummyNode，长度为N0+N1,
      * 然后继续与list[2]
@@ -55,13 +53,20 @@ public class MergeKListTest {
         } else if (len == 1) {
             return lists[0];
         }
-        ListNode dummyNode = new ListNode(-1);
-        dummyNode.next = lists[0];
-        for (int i = 1; i < len; i++) {
-            dummyNode.next = mergeListNode(dummyNode.next, lists[i]);
-        }
-        return dummyNode.next;
+        return merge(lists, 0, len - 1);
     }
+
+    private ListNode merge(ListNode[] lists, int left, int right) {
+        if (left == right) {
+            return lists[right];
+        }
+        if (left > right) {
+            return null;
+        }
+        int m = (left+right)>>1;
+        return mergeListNode(merge(lists, 0, m), merge(lists, m + 1, right));
+    }
+
 
     private ListNode mergeListNode(ListNode l1, ListNode l2) {
         ListNode res = new ListNode(-1);
@@ -95,22 +100,5 @@ public class MergeKListTest {
             resCur = resCur.next;
         }
         return res.next;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
     }
 }
