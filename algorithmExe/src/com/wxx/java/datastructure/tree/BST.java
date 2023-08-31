@@ -1,11 +1,7 @@
-package com.wxx.java.search;
-
-import org.junit.Test;
+package com.wxx.java.datastructure.tree;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 
 /**
  * @author wxxstar

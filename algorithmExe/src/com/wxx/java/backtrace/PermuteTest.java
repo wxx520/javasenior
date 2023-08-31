@@ -19,25 +19,25 @@ public class PermuteTest {
 
         boolean[] used = new boolean[len];
 
-        dfs(nums, len, 0, new ArrayDeque<>(), used, ret);
+        dfs(nums, 0, new ArrayDeque<>(), used, ret);
 
         return ret;
     }
 
-    private void dfs(int[] nums, int len, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> ret) {
-        if (depth == len) {
+    private void dfs(int[] nums, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> ret) {
+        if (depth == nums.length) {
             ret.add(new ArrayList<>(path));
             return;
         }
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < nums.length; i++) {
             if (used[i]) {
-                return;
+                continue;
             }
             path.offerLast(nums[i]);
             used[i] = true;
 
             System.out.println("  递归之前 => " + path);
-            dfs(nums, len, depth + 1, path, used, ret);
+            dfs(nums, depth + 1, path, used, ret);
             System.out.println("递归之后 => " + path);
 
             used[i] = false;
